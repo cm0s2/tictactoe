@@ -119,8 +119,6 @@ const gameController = (() => {
         for (let i = 0; i < 9; i +=3) {
             const mark = gameBoard.getSquareValue(i);
             if (mark && gameBoard.getSquareValue(i + 1) === mark && gameBoard.getSquareValue(i + 2) === mark) {
-                console.log('Horizontal check true, i is ' + i);
-                console.log(mark);
                 return mark;
             }
         }
@@ -129,8 +127,6 @@ const gameController = (() => {
         for (let i = 0; i < 9; i++) {
             const mark = gameBoard.getSquareValue(i);
             if (mark && gameBoard.getSquareValue(i + 3) === mark && gameBoard.getSquareValue(i + 6) === mark) {
-                console.log('Vertical check true, i is ' + i);
-                console.log(mark);
                 return mark;
             }
         }
@@ -139,11 +135,9 @@ const gameController = (() => {
         const mark = gameBoard.getSquareValue(4); // center square
         if (mark) {
             if (gameBoard.getSquareValue(0) === mark && gameBoard.getSquareValue(8) === mark) {
-                console.log('Diagonal 1');
                 return mark;
             }
             if (gameBoard.getSquareValue(2) === mark && gameBoard.getSquareValue(6) === mark) {
-                console.log('Diagonal 2');
                 return mark;
             }
         }
@@ -166,7 +160,6 @@ const displayController = (() => {
     restartBtn.addEventListener('click', gameController.resetGame);
 
     gameBoardSquares.forEach((square, index) => {
-        console.log(square + ' ' + index + ' ' + square.innerText);
         square.addEventListener('click', () => { gameController.placeMark(index) });
     });
 
